@@ -727,6 +727,12 @@ namespace Telemachus
                 dataSources => { return FlightGlobals.fetch.VesselTarget != null ? Vector3.Distance(FlightGlobals.fetch.VesselTarget.GetTransform().position, dataSources.vessel.GetTransform().position) : 0; },
                 "tar.distance", "Target Distance", formatters.Default, APIEntry.UnitType.DISTANCE));
 
+			registerAPI (new PlotableAPIEntry (
+				dataSources => {
+					return FlightGlobals.fetch.VesselTarget.GetVessel().altitude;
+				},
+				"tar.altitude", "Target Altitude", formatters.Default, APIEntry.UnitType.DISTANCE));
+
             registerAPI(new PlotableAPIEntry(
                 dataSources => { return FlightGlobals.fetch.VesselTarget != null ? (FlightGlobals.fetch.VesselTarget.GetOrbit().GetVel() - dataSources.vessel.orbit.GetVel()).magnitude : 0; },
                 "tar.o.relativeVelocity", "Target Relative Velocity", formatters.Default, APIEntry.UnitType.VELOCITY));
